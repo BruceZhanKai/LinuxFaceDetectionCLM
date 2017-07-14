@@ -1,0 +1,248 @@
+//============================================================================================
+//============================================================================================
+//********************************************************************************************
+// this SOP file is introduce the initial and necessary tools if you first get the 
+// TK1 board, then follow the SOP step by step will complete setting before program
+// code or any work.
+// the necessary tools include "opencv2.4.12, dlib, tbb, clm, flycap2"
+// copyright @ XYZrobot inc. 2017
+//*********************************************************************************************
+//=============================================================================================
+//=============================================================================================
+_______________________________________________________________________________________________
+
+/**Ubuntu 16.04**/
+
+### Foce UEFI Installation -> [back]
+
+### 修復 GRUB（PATA=hda、SATA/SCSI/SAS=sda）
+$ sudo update-grub
+$ sudo grub-install /dev/sda
+
+### 修復 出現 "grub rescue>" (進不了Linux桌面時)
+### https://www.openfoundry.org/tw/foss-programs/9267-linux-grub2-fixing
+
+grub rescue > set boot=(hd0,6)
+grub rescue > set prefix=(hd0,6)/grub
+grub rescue > insmod normal
+grub rescue > normal
+
+### 進入Linux Install Dependencies
+$ sudo apt-get update
+$ sudo apt-get install -y build-essential
+$ sudo apt-get install -y cmake
+$ sudo apt install cmake-curses-gui
+$ sudo apt-get update
+$ sudo apt-get upgrade
+$ sudo apt-get dist-upgrade
+
+$ sudo add-apt-repository ppa:notepadqq-team/notepadqq
+$ sudo apt-get update
+$ sudo apt-get install notepadqq
+_______________________________________________________________________________________________
+
+/**Dlib**/
+
+### Download dlib-18.18
+
+### put "dlib-18.18" file to "home/bruce/"
+
+$ cd dlib-18.18/dlib
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+$ sudo make install
+$ sudo ldconfig
+
+
+
+_______________________________________________________________________________________________
+
+/**TBB**/
+
+$ sudo apt-get install libtbb.dev
+
+$ sudo apt-get install libboost-dev libboost-thread-dev libboost-system-dev libboost-filesystem-dev
+_______________________________________________________________________________________________
+
+/**QT**/
+
+### Download SDK 5.8
+### https://wiki.qt.io/Install_Qt_5_on_Ubuntu
+
+
+_______________________________________________________________________________________________
+
+/**OpenCV**/
+
+### Start from Option2)Building the public OpenCV library from source:
+### install OpenCV
+### https://gist.github.com/arthurbeggs/06df46af94af7f261513934e56103b30
+### http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html
+
+### Download opencv-2.4.12-linux
+### http://opencv.org/releases.html
+
+$ sudo apt-get install build-essential
+$ sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+$ sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+
+$ cd ~/opencv
+$ mkdir release
+$ cd release
+$ cmake cmake -G "Unix Makefiles" -DCMAKE_CXX_COMPILER=/usr/bin/g++ CMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_TBB=ON -DBUILD_NEW_PYTHON_SUPPORT=ON -DWITH_V4L=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_PYTHON_EXAMPLES=ON -DBUILD_EXAMPLES=ON -DWITH_OPENGL=ON -DBUILD_FAT_JAVA_LIB=ON -DINSTALL_TO_MANGLED_PATHS=ON -DINSTALL_CREATE_DISTRIB=ON -DINSTALL_TESTS=ON -DENABLE_FAST_MATH=ON -DWITH_IMAGEIO=ON -DBUILD_SHARED_LIBS=OFF -DWITH_GSTREAMER=ON ..
+$ cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -DWITH_TBB=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_TESTS=ON -DBUILD_TBB=ON ..
+$ ccmake ..
+__________________________________________________________________________
+
+   ##if you key in the "ccmake .." you will see as follow:
+    #customize cmake (cd build)(ccmake ..) 
+
+
+    #  BUILD_SHARED_LIBS                ON                                           
+    #  BUILD_TBB                        ON  
+    #  CUDA_ARCH_BIN                    3.2   (tk1-> 3.2,x86 PC->5)                                         
+    #  CUDA_ARCH_PTX       
+    #  INSTALL_TESTS                    ON     
+    #  WITH_CUDA                        ON 
+    #  WITH_TBB                         ON   
+    #  WITH_VTK                         OFF          
+__________________________________________________________________________
+
+ ##enter twice "c" and one "g" 
+
+$ make all -j4
+$ sudo make install
+_______________________________________________________________________________________________
+
+/**FlyCapture2**/
+
+### http://www.ptgrey.com/support/downloads/10398
+### Check USB3 support : libgtkmm-2.4-dev libglademm-2.4-dev libusb-1.0
+$ sudo apt-get install libraw1394-11 libgtkmm-2.4-1c2a libglademm-2.4-1c2a libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 libusb-1.0-0
+
+$ sudo apt-get -f install
+
+### install FlyCapture2
+### Download:
+###	BlackFly
+###	BFLY-U3-03S2M-CS Blackfly
+### 	FlyCapture 2.9.3.15 SDK - ARMHF (32-bit) — 03/29/2016 - 17.1206MB
+### http://www.ptgrey.com/KB/10357
+### Dont need
+### https://www.youtube.com/watch?v=ts4fk5j7mfk
+### https://www.ptgrey.com/tan/10685
+
+$ cd flycapture2-2.11.3.121-amd64
+$ sudo apt-get install libglademm-2.4-1v5:i386
+$ sudo apt-get install libgtkmm-2.4-1v5
+$ sudo apt-get install libraw1394-11 libgtkmm-2.4-1c2a libglademm-2.4-1c2a libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 libusb-1.0-0
+$ sudo apt-get -f install
+$ sudo apt-get install libgtkmm-2.4-dev libgtkglextmm-x11-1.2-dev
+$ sudo apt-get -f install
+$ sudo sh install_flycapture.sh
+
+### 1. Open the /etc/default/grub file in any text editor. Find and replace:
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+
+with this:
+
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash usbcore.usbfs_memory_mb=1024"
+
+### 2. Update grub with these settings:
+
+$ sudo update-grub
+
+ or 
+ 
+$ sudo modprobe usbcore usbfs_memory_mb=1000
+
+
+### Restart and check is 1024
+
+$ cat /sys/module/usbcore/parameters/usbfs_memory_mb
+
+### Also it is recommended to upgrade your kernel to 3.16 by doing
+
+$ sudo apt-get install linux-signed-generic-lts-utopic
+
+###test FlyCapture2
+$ ./flycapture-name/bin/FlyCap2
+###add config button , change configuration
+###change FPS && image size ******[ resolution need small 1920x1080]********* 
+
+#############flycap2--test###################
+$ cd flycapture.2.9.3.43_armhf/bin
+$ ./FlyCap2
+_______________________________________________________________________________________________
+
+
+
+_______________________________________________________________________________________________
+
+/**CLM**/
+
+### add folder "CLM_src" in 1st floor folder and put all cpp & hpp files in
+### move main cpp to 1st floor folder
+### move "model" to 1st floor folder
+_______________________________________________________________________________________________
+
+/**Gender Code**/
+
+#ifdef _WIN32
+	#include "stdafx.h"
+	#include <windows.h> 
+	#include <io.h>
+	#include <direct.h>
+	#define not !
+	#include <tbb\parallel_for.h>
+	#include "rfid\CardReader.h"
+#else
+	#include <tbb/parallel_for.h>
+	#include "rfid/CardReader.h"
+	#include <unistd.h>
+	#include <arpa/inet.h>
+	#include <sys/types.h>
+	#include <sys/stat.h>
+	#include <dirent.h>
+#endif	
+
+### find [c_file]
+
+### find [socket]
+
+### find [_rmdir]
+
+### find [_mkdir] -> [mkdir]
+###################################
+	#ifdef _WIN32
+		_mkdir(path9);
+	#else
+		mkdir(path9, 0777);
+	#endif
+###################################
+
+### find [Sleep] -> [sleep]
+###################################
+	#ifdef _WIN32
+		Sleep(1000);
+	#else
+		sleep(1);
+	#endif
+###################################
+
+
+
+$ cd /home/bruce/20170613_libDetection/build/autoBuild.sh
+$ bash ./autoBuild.sh
+or
+$ sudo chmod 755 autoBuild.sh
+$ ./autoBuild.sh
+_______________________________________________________________________________________________
+
+
+
+
+
