@@ -27,6 +27,13 @@ grub rescue > set prefix=(hd0,6)/grub
 grub rescue > insmod normal
 grub rescue > normal
 
+### login usb-ubuntu system
+
+$ sudo fdisk -l
+$ sudo mount /dev/sda6 /mnt
+$ sudo grub-install --root-directory=/mnt /dev/sda
+# reboot and change boot setting first sata
+
 ### 進入Linux Install Dependencies
 $ sudo apt-get update
 $ sudo apt-get install -y build-essential
