@@ -46,6 +46,21 @@ $ sudo apt-get dist-upgrade
 $ sudo add-apt-repository ppa:notepadqq-team/notepadqq
 $ sudo apt-get update
 $ sudo apt-get install notepadqq
+
+### ntp
+
+$ sudo apt-get install ntp ntpdate
+$ sudo gedit /etc/ntp.conf
+# add
+# "server time.stdtime.gov.tw"
+# "server tick.stdtime.gov.tw"
+# "server tock.stdtime.gov.tw"
+$ sudo /etc/init.d/ntp stop
+$ sudo ntpdate tick.stdtime.gov.tw
+$ sudo /etc/init.d/ntp start
+
+
+
 _______________________________________________________________________________________________
 
 /**Dlib**/
