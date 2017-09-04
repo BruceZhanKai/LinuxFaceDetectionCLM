@@ -71,8 +71,11 @@ $ sudo gedit /etc/default/rcS
 
 2. ubuntu 16.04
 $ timedatectl set-local-rtc 1
-# then do time correction by BIOS or windows system
 
+# then do time correction by BIOS or windows system
+# as set date manually and lock with bios
+$ date 09041005 #9/4 10:05
+$ sudo hwclock --systohc --localtime
 _______________________________________________________________________________________________
 
 /**Dlib**/
