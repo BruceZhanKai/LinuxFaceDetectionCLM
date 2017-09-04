@@ -59,7 +59,19 @@ $ sudo /etc/init.d/ntp stop
 $ sudo ntpdate tick.stdtime.gov.tw
 $ sudo /etc/init.d/ntp start
 
+### it do not work in one pc with two operating systems
 
+### the way to solve it is that turn on UTC in windows or turn off UTC in ubuntu
+
+# turn off UTC in ubuntu
+
+1. ubuntu 14.04
+$ sudo gedit /etc/default/rcS
+# from "UTC=yes" to "UTC=no"
+
+2. ubuntu 16.04
+$ timedatectl set-local-rtc 1
+# then do time correction by BIOS or windows system
 
 _______________________________________________________________________________________________
 
