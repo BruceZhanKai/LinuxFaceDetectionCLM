@@ -76,6 +76,39 @@ $ timedatectl set-local-rtc 1
 # as set date manually and lock with bios
 $ date 09041005 #9/4 10:05
 $ sudo hwclock --systohc --localtime
+
+
+### ssh + tmux from SERVER to CLIENT
+
+# in SERVER
+$ sudo apt-get install openssh-server
+
+# in CLIENT
+$ sudo apt-get install openssh-server
+$ sudo apt-get install tmux
+
+# fix DISPLAY from 10.0 to 0.0
+$ export DISPLAY=:0.0
+
+# create new branch
+$ tmux
+
+# execute your program
+$ cd 20170828_LocalDetect
+$ ./Execute.sh
+
+# detach from tmux
+$ ctrl + b then d
+
+# reattach tmux
+$ tmux attach
+
+# delete tmux
+$ ctrl + b then &
+
+# exit ssh 
+$ enter then ~.
+
 _______________________________________________________________________________________________
 
 /**Dlib**/
