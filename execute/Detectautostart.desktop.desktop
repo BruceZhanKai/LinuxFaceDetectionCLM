@@ -1,0 +1,15 @@
+# Put this file inside "$HOME/.config/autostart/"
+# The key point is sleep 10 seconds before execute
+# so that if there's something wrong, the GUI
+# terminal will report
+
+[Desktop Entry]
+Type=Application
+Exec=bash -c "sleep 10   && cd $HOME/20170907_LocalDetect  &&  ./execute.sh"
+Terminal=true
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=Face Detection
+Comment=Face Detection
+Name[en_US]=Detectautostart.desktop
