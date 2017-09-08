@@ -2,16 +2,16 @@
 
 ## Ubuntu 16.04
 
-- Foce UEFI Installation -> [back]
+### Foce UEFI Installation -> [back]
 
-- 修復 GRUB（PATA=hda、SATA/SCSI/SAS=sda）
+### 修復 GRUB（PATA=hda、SATA/SCSI/SAS=sda）
 
 ```
 $ sudo update-grub
 $ sudo grub-install /dev/sda
 ```
 
-- 修復 出現 "grub rescue>" (進不了Linux桌面時)
+### 修復 出現 "grub rescue>" (進不了Linux桌面時)
 
 ```
 grub rescue > set boot=(hd0,6)
@@ -20,7 +20,7 @@ grub rescue > insmod normal
 grub rescue > normal
 ```
 
-- login usb-ubuntu system
+### login usb-ubuntu system
 
 ```
 $ sudo fdisk -l
@@ -30,7 +30,7 @@ $ sudo grub-install --root-directory=/mnt /dev/sda
 reboot and change boot setting first sata
  
  
-- 進入Linux Install Dependencies
+### 進入Linux Install Dependencies
 
  ```
 $ sudo apt-get update
@@ -46,17 +46,17 @@ $ sudo apt-get update
 $ sudo apt-get install notepadqq
 ```
 
-- ntp
+### ntp
 
 ```
 $ sudo apt-get install ntp ntpdate
 $ sudo gedit /etc/ntp.conf
 ```
 
-add
-"server time.stdtime.gov.tw"
-"server tick.stdtime.gov.tw"
-"server tock.stdtime.gov.tw"
+> add
+> "server time.stdtime.gov.tw"
+> "server tick.stdtime.gov.tw"
+> "server tock.stdtime.gov.tw"
 
 ```
 $ sudo /etc/init.d/ntp stop
@@ -90,7 +90,7 @@ $ date 09041005 #9/4 10:05
 $ sudo hwclock --systohc --localtime
 ```
 
-- ssh + tmux from SERVER to CLIENT
+### ssh + tmux from SERVER to CLIENT
 
 1. in SERVER
 ```
