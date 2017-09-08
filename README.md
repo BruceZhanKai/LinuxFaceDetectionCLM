@@ -1,4 +1,4 @@
-# LinuxLocalPorting
+# Linux Face Detection CLM
 
 ## Ubuntu 16.04
 
