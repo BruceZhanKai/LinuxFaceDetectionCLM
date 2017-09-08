@@ -153,7 +153,7 @@ ________________________________________________________________________________
 ## OpenCV
 
 
-Download opencv-2.4.13-linux
+opencv-2.4.13-linux
 
 ```
 $ wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.13/opencv-2.4.13.zip
