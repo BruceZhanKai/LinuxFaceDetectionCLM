@@ -53,10 +53,10 @@ $ sudo apt-get install ntp ntpdate
 $ sudo gedit /etc/ntp.conf
 ```
 
-> add
-> "server time.stdtime.gov.tw"
-> "server tick.stdtime.gov.tw"
-> "server tock.stdtime.gov.tw"
+add
+"server time.stdtime.gov.tw"
+"server tick.stdtime.gov.tw"
+"server tock.stdtime.gov.tw"
 
 ```
 $ sudo /etc/init.d/ntp stop
@@ -65,9 +65,7 @@ $ sudo /etc/init.d/ntp start
 ```
 
 it do not work in one pc with two operating systems
-
 the way to solve it is that turn on UTC in windows or turn off UTC in ubuntu
-
 turn off UTC in ubuntu
 
 1. ubuntu 14.04
@@ -173,7 +171,7 @@ ________________________________________________________________________________
 Download opencv-2.4.13-linux
 
 ```
-wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.13/opencv-2.4.13.zip
+$ wget http://downloads.sourceforge.net/project/opencvlibrary/opencv-unix/2.4.13/opencv-2.4.13.zip
 $ sudo apt-get install build-essential
 $ sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
 $ sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
@@ -254,7 +252,7 @@ $ ./Flycap2
 
 ## CLM
 
-add folder "CLM_src" in 1st floor folder and put all cpp & hpp files in
+add folder "CLM-src" in 1st floor folder and put all cpp and hpp files in
 move main cpp to 1st floor folder
 move "model" to 1st floor folder
 
