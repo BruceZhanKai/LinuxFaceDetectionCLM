@@ -53,10 +53,10 @@ $ sudo apt-get install ntp ntpdate
 $ sudo gedit /etc/ntp.conf
 ```
 
-add
-"server time.stdtime.gov.tw"
-"server tick.stdtime.gov.tw"
-"server tock.stdtime.gov.tw"
+>add>
+>"server time.stdtime.gov.tw">
+>"server tick.stdtime.gov.tw">
+>"server tock.stdtime.gov.tw">
 
 ```
 $ sudo /etc/init.d/ntp stop
