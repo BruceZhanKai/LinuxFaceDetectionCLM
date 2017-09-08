@@ -51,14 +51,11 @@ $ sudo apt-get install notepadqq
 ```
 $ sudo apt-get install ntp ntpdate
 $ sudo gedit /etc/ntp.conf
-```
+add
+"server time.stdtime.gov.tw"
+"server tick.stdtime.gov.tw"
+"server tock.stdtime.gov.tw"
 
->add>
->"server time.stdtime.gov.tw">
->"server tick.stdtime.gov.tw">
->"server tock.stdtime.gov.tw">
-
-```
 $ sudo /etc/init.d/ntp stop
 $ sudo ntpdate tick.stdtime.gov.tw
 $ sudo /etc/init.d/ntp start
@@ -99,39 +96,27 @@ $ sudo apt-get install openssh-server
 ```
 $ sudo apt-get install openssh-server
 $ sudo apt-get install tmux
-```
 
 fix DISPLAY from 10.0 to 0.0
-
-```
 $ export DISPLAY=:0.0
-```
 
 create new branch
-
-```
 $ tmux
-```
 
 execute your program
-```
 $ cd 20170828_LocalDetect
 $ ./Execute.sh
-```
+
 detach from tmux
-```
 $ ctrl + b then d
-```
+
 reattach tmux
-```
 $ tmux attach
-```
+
 delete tmux
-```
 $ ctrl + b then &
-```
+
 exit ssh 
-```
 $ enter then ~.
 ```
 
@@ -199,7 +184,7 @@ $ tar zxvf flycapture2-2.9.3.43-amd64-pkg.tgz
 $ cd flycapture2-2.9.3.43-amd64-pkg.tgz
 $ sudo apt-get install libraw1394-11 libgtkmm-2.4-1c2a libglademm-2.4-1c2a libgtkglextmm-x11-1.2-dev libgtkglextmm-x11-1.2 libusb-1.0-0
 $ sudo sh install_flycapture.sh
-```
+
 Would you like to continue and install all the FlyCapture2 SDK packages?
 (y/n)$ y
 If this is not ran then your cameras may be only accessible by running flycap as sudo.
@@ -217,7 +202,6 @@ Do you want to restart the udev daemon?
 run /usr/bin/Flycap2 to test
 if could not detect camera, just reboot
 
-```
 $ cd /usr/bin/
 $ ./Flycap2
 ```
@@ -241,11 +225,9 @@ $ sudo apt-get -f install
 $ sudo apt-get install libglademm-2.4-1v5
 $ sudo apt-get -f install
 $ sudo sh install_flycapture.sh
-```
+
 run /usr/bin/Flycap2 to test
 if could not detect camera, just reboot
-
-```
 $ cd /usr/bin/
 $ ./Flycap2
 ```
